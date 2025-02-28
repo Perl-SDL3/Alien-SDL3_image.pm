@@ -105,16 +105,16 @@
    "release_status" : "stable",
    "resources" : {
       "bugtracker" : {
-         "web" : "https://github.com/sanko/Alien-SDL3_image.pm/issues"
+         "web" : "https://github.com/Perl-SDL3/Alien-SDL3_image.pm/issues"
       },
-      "homepage" : "https://github.com/sanko/Alien-SDL3_image.pm",
+      "homepage" : "https://github.com/Perl-SDL3/Alien-SDL3_image.pm",
       "license" : [
          "http://www.perlfoundation.org/artistic_license_2_0"
       ],
       "repository" : {
          "type" : "git",
-         "url" : "https://github.com/sanko/Alien-SDL3_image.pm.git",
-         "web" : "https://github.com/sanko/Alien-SDL3_image.pm"
+         "url" : "https://github.com/Perl-SDL3/Alien-SDL3_image.pm.git",
+         "web" : "https://github.com/Perl-SDL3/Alien-SDL3_image.pm"
       }
    },
    "version" : "0.05",
