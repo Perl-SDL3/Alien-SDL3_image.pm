@@ -34,16 +34,9 @@ class    #
     #~ dnf install SDL2-devel SDL2_image-devel SDL2_mixer-devel SDL2_ttf-devel
     #~ https://github.com/libsdl-org/setup-sdl/issues/20
     # TODO: Write a GH action to test with libs preinstalled
-    field $version : param  //= '3.2.0';
+    field $version : param  //= '3.2.2';
     field $prebuilt : param //= 1;
 
-    #~ https://github.com/libsdl-org/SDL_image/releases/download/release-3.2.0/SDL3_image-3.2.0-win32-arm64.zip
-    #~ https://github.com/libsdl-org/SDL_image/releases/download/release-3.2.0/SDL3_image-3.2.0-win32-x64.zip
-    #~ https://github.com/libsdl-org/SDL_image/releases/download/release-3.2.0/SDL3_image-3.2.0-win32-x86.zip
-    #~ https://github.com/libsdl-org/SDL_image/releases/download/release-3.2.0/SDL3_image-devel-3.2.0-mingw.zip
-    #~ https://github.com/libsdl-org/SDL_image/releases/download/release-3.2.0/SDL3_image-devel-3.2.0-VC.zip
-    #~ https://github.com/libsdl-org/SDL_image/releases/download/release-3.2.0/SDL3_image-3.2.0.dmg
-    #~ https://github.com/libsdl-org/SDL_image/releases/download/release-3.2.0/SDL3_image-3.2.0.tar.gz
     field $archive : param //= sprintf 'https://github.com/libsdl-org/SDL_image/releases/download/release-%s/SDL3_image-' . (
         $^O eq 'MSWin32' ?
             !$prebuilt ?
