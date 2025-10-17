@@ -34,10 +34,9 @@ class    #
     #~ dnf install SDL2-devel SDL2_image-devel SDL2_mixer-devel SDL2_ttf-devel
     #~ https://github.com/libsdl-org/setup-sdl/issues/20
     # TODO: Write a GH action to test with libs preinstalled
-    field $version : param  //= '3.2.2';
+    field $version  : param //= '3.2.4';
     field $prebuilt : param //= 1;
-
-    field $archive : param //= sprintf 'https://github.com/libsdl-org/SDL_image/releases/download/release-%s/SDL3_image-' . (
+    field $archive  : param //= sprintf 'https://github.com/libsdl-org/SDL_image/releases/download/release-%s/SDL3_image-' . (
         $^O eq 'MSWin32' ?
             !$prebuilt ?
                 '%s.zip' :
@@ -52,16 +51,16 @@ class    #
     field %config;
     #
     # Params to Build script
-    field $install_base : param  //= '';
-    field $installdirs : param   //= '';
-    field $uninst : param        //= 0;    # Make more sense to have a ./Build uninstall command but...
+    field $install_base  : param //= '';
+    field $installdirs   : param //= '';
+    field $uninst        : param //= 0;    # Make more sense to have a ./Build uninstall command but...
     field $install_paths : param //= ExtUtils::InstallPaths->new( dist_name => $meta->name );
-    field $verbose : param       //= 0;
-    field $dry_run : param       //= 0;
-    field $pureperl : param      //= 0;
-    field $jobs : param          //= 1;
-    field $destdir : param       //= '';
-    field $prefix : param        //= '';
+    field $verbose       : param //= 0;
+    field $dry_run       : param //= 0;
+    field $pureperl      : param //= 0;
+    field $jobs          : param //= 1;
+    field $destdir       : param //= '';
+    field $prefix        : param //= '';
     field $cwd = cwd()->absolute;
     #
     #
@@ -141,7 +140,7 @@ class    #
                 $okay->child($platform)->visit(
                     sub {
                         my ( $path, $state ) = @_;
-                        $path->is_dir ? $p->child( $path->relative( $okay->child($platform) ) )->mkdir( verbose => $verbose ) :
+                        $path->is_dir ? $p->child( $path->relative( $okay->child($platform) ) )->mkdir( { verbose => $verbose } ) :
                             $path->copy( $p->child( $path->relative( $okay->child($platform) ) ) );
                     },
                     { recurse => 1 }
@@ -152,7 +151,7 @@ class    #
                 $okay->child('include')->visit(
                     sub {
                         my ( $path, $state ) = @_;
-                        $path->is_dir ? $p->child( $path->relative( $okay->child('include') ) )->mkdir( verbose => $verbose ) :
+                        $path->is_dir ? $p->child( $path->relative( $okay->child('include') ) )->mkdir( { verbose => $verbose } ) :
                             $path->copy( $p->child( $path->relative( $okay->child('include') ) ) );
                     },
                     { recurse => 1 }
@@ -160,7 +159,7 @@ class    #
                 $okay->child( 'lib', $platform )->visit(
                     sub {
                         my ( $path, $state ) = @_;
-                        $path->is_dir ? $p->child( $path->relative( $okay->child( 'lib', $platform ) ) )->mkdir( verbose => $verbose ) :
+                        $path->is_dir ? $p->child( $path->relative( $okay->child( 'lib', $platform ) ) )->mkdir( { verbose => $verbose } ) :
                             $path->copy( $p->child( $path->relative( $okay->child( 'lib', $platform ) ) ) );
                     },
                     { recurse => 1 }
